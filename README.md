@@ -5,7 +5,7 @@ Functions used to run [SpaceKLIP](https://github.com/kammerje/spaceKLIP) for MIR
 These functions have been built using the [ExeterSpaceKLIP](https://github.com/raphhbw/ExeterSpaceKLIP) package. For NIRCam reductions use the `develop` branch and for MIRI use the `miri_improvements` branch of SpaceKLIP.
 
 ### Run code
-To run the code make sure you are using the correct branch of SpaceKLIP for the desired type of subtraction. Run `python multi_sklip.py --help` to check the different options available when running the code.
+To run the code make sure you are using the correct branch of SpaceKLIP for the desired type of subtraction. Run `python multi_sklip.py --help` to check the different options available when running the code. **Main requirement is having SpaceKLIP installed.**
 ```
 python multi_sklip.py --p params/params.json
 ```
