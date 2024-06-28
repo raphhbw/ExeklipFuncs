@@ -1,14 +1,9 @@
-""" Code updated
-9-01-24
-"""
 if __name__ == '__main__':
-    import argparse, os, json, sys
+    import argparse, os, json
     from sklip import Sklip
-    import numpy as np
-    # from sklip_v0 import Sklip
 
-
-    parser = argparse.ArgumentParser(description='Help')
+    # setting argparse options
+    parser = argparse.ArgumentParser(description='Parameter option for multi_sklip.py')
     parser.add_argument('--p', metavar='param.json', help='parameter file name (default:param.json)')
     parser.add_argument('--nice', metavar='niceness', default=10, help='niceness of job (default: 10)')
     parser.add_argument('--thr', metavar='jump_threshold', default=4., help='jump threshold in ramp fitting (default: 4.)')
@@ -16,27 +11,25 @@ if __name__ == '__main__':
                     help='cores used in the ramp fitting (default: all) - options: quarter, half, all')
     args = parser.parse_args()
 
+    # Set niceness
     os.nice(int(args.nice))
 
+    # Load params
     with open(args.p) as paramfile:
         param = json.load(paramfile)
 
+    # Stage option reminder
     stages = ['stage1', 'stage2', 'img_proc', 'sub', 'rawcon', 'calcon', 'end']
 
+    # Looping over the different stars in the param file
     for target in param.keys():
-
         print('##########################################')
         print(target, '----------')
         print(param[target])
         star_param = param[target]
         print('##########################################')
 
-        stage = star_param["start_stage"]
-        final_stage = star_param["final_stage"]
-
-        updated_odir = star_param["odir"]
-        jump_thr = args.thr
-
+        # Set up the Sklip pipeline with info from param file
         Pipeline = Sklip(star=star_param["star"], 
                     bkg=star_param["bkg"], 
                     instr=star_param["instr"],
@@ -45,23 +38,19 @@ if __name__ == '__main__':
                     subsect=star_param["subsect"], 
                     annuli=star_param["annuli"], 
                     uncal_dir=star_param["uncal_dir"], 
-                    odir=updated_odir,
+                    odir=star_param["odir"],
                     SpT=star_param["SpT"],
                     photo_path=star_param["photo_path"],
                     companions=star_param["companions"],
-                    stage=stage,
-                    final_stage=final_stage,
+                    stage=star_param["start_stage"],
+                    final_stage=star_param["final_stage"],
                     skip_1_f=star_param['skip_1_f']
                     )
         print('--------------')
-        # if jump_th == 1:
-        #     Pipeline.stage1_subdir = 'stage1_masked_thr1'
-        # Pipeline.load_database()
         
-        Pipeline.run_pipeline(godoy=star_param["godoy"], sub_path='padded', jump_threshold=jump_thr)
-
-        # Pipeline.find_contrast_paths()
-        # print(Pipeline.contrast_path)
+        # Run pipeline from sklip.py
+        # sub_path defines the files used to perform the PSF subtraction on (default: padded)
+        Pipeline.run_pipeline(godoy=star_param["godoy"], sub_path='padded', jump_threshold=args.thr)
 
         print('\n' + '##########################################')
         print('Finished with {}'.format(target))
