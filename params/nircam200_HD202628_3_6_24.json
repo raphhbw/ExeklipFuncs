@@ -1,0 +1,18 @@
+{
+    "HD202628":{ "star":"HD202628",
+                "instr":"nircam",
+                "bkg": "None",
+                "subtraction":["RDI"],
+                "KLmodes":[1,2,3,4,5,6,7,8,9,10,15,20],
+                "subsect":[1],
+                "annuli":[1],
+                "uncal_dir":"/data/rb941/JWST/NIRCam-200/HD202628/uncal/",
+                "odir":"/data/rb941/JWST/NIRCam-200/HD202628/1_f_corr_false/",
+                "SpT":"G5V",
+                "photo_path":"/data/rb941/photometry/hd202628_phoenix_sol+modbb_disk_r_.txt",
+                "companions":0,
+                "start_stage":"stage1",
+                "final_stage":"end",
+                "godoy":0
+                }
+}   

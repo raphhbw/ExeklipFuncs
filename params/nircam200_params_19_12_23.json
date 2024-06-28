@@ -1,0 +1,28 @@
+{
+    "HD195627":{ "star":"HD195627",
+                "instr":"nircam",
+                "bkg": "None",
+                "subtraction":["ADI", "RDI", "ADI+RDI"],
+                "KLmodes":[1,2,3,4,5,6,7,8,9,10,15,20],
+                "subsect":[1,2,3,4,5,6,7,8,9,10],
+                "annuli":[1,2,3,4,5,6,7,8,9,10],
+                "uncal_dir":"/data/rb941/JWST/NIRCam-200/HD195627/uncal/",
+                "odir":"/data/rb941/JWST/NIRCam-200/HD195627/spaceklip/",
+                "SpT":"F0V",
+                "photo_path":"/data/rb941/photometry/hd195627_phoenix_sol+modbb_disk_r_.txt",
+                "companions":0
+                },
+   "HD164249":{ "star":"HD164249",
+                "instr":"nircam",
+                "bkg": "None",
+                "subtraction":["ADI", "RDI", "ADI+RDI"],
+                "KLmodes":[1,2,3,4,5,6,7,8,9,10,15,20],
+                "subsect":[1,2,3,4,5,6,7,8,9,10],
+                "annuli":[1,2,3,4,5,6,7,8,9,10],
+                "uncal_dir":"/data/rb941/JWST/NIRCam-200/HD164249/uncal/",
+                "odir":"/data/rb941/JWST/NIRCam-200/HD164249/spaceklip/",
+                "SpT":"F6V",
+                "photo_path":"/data/rb941/photometry/hd164249_phoenix_sol+modbb_disk_r_.txt",
+                "companions":0
+                }
+}   
