@@ -11,6 +11,7 @@ python multi_sklip.py --p params/params.json
 ```
 
 ### Files
+
 - `params/params.json`: example list of parameters that can be given to `multi_sklip.py`. Parameters include:
                 - `star`: name of star
                 - `instr`: instrumnet (nircam or miri)
